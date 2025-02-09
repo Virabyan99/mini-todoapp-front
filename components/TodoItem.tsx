@@ -3,6 +3,7 @@ import React from 'react';
 import { Badge } from './ui/badge';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
+import { Check } from 'lucide-react';
 
 interface TodoItemProps {
   id: number;
@@ -23,7 +24,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ id, text, completed, onToggle, onDe
           >
             {text}
           </span>
-          {completed && <Badge variant="secondary">Done</Badge>}
+          {completed && <Badge variant="secondary">Done ✅</Badge>}
         </div>
         <div className="flex gap-2">
           <Button onClick={() => onToggle(id)} variant="outline" className="px-3 py-1">Toggle</Button>

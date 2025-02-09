@@ -5,6 +5,7 @@ import type { NextPage } from 'next';
 import TodoLayout from '../components/TodoLayout';
 import { useEffect, useState } from 'react';
 import TodoItem from '../components/TodoItem';
+import { Loader2 } from 'lucide-react';
 
 interface Todo {
   id: number;
@@ -48,7 +49,7 @@ const Home: NextPage = () => {
       <p className='my-5 text-center'>Welcome to your Todo App. Start by adding a todo item!</p>
       
       {/* Loading State */}
-      {loading && <p>Loading todos...</p>}
+      {loading && <Loader2 className='animate-spin'/>}
       
       {/* Display todos */}
       <div>
