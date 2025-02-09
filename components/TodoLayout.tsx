@@ -1,20 +1,20 @@
-// components/TodoLayout.tsx (modified header section)
-
+// components/TodoLayout.tsx
 import { Button } from "./ui/button";
-import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
-
+import { Card, CardContent, CardHeader, CardFooter } from "./ui/card";
 
 const TodoLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto', padding: '1rem' }}>
-      <Card>
-        <CardHeader style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h1>Todo App</h1>
-          <Button variant="outline">Menu</Button>
+    <div className="max-w-4xl mx-auto p-6">
+      <Card className="bg-white shadow-lg rounded-lg p-5">
+        <CardHeader className="flex justify-between items-center mb-4">
+          <h1 className="text-3xl font-semibold text-gray-800">Todo App</h1>
+          
         </CardHeader>
-        <CardContent>{children}</CardContent>
-        <CardFooter>
-          <small>Built with Next.js, shadcnui & Hono.js</small>
+        <CardContent>
+          {children}
+        </CardContent>
+        <CardFooter className="mt-4">
+          <small className="text-gray-600">Built with Next.js, shadcnui & Hono.js</small>
         </CardFooter>
       </Card>
     </div>

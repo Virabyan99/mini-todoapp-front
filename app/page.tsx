@@ -1,6 +1,6 @@
 "use client";
 
-// pages/index.tsx
+
 import type { NextPage } from 'next';
 import TodoLayout from '../components/TodoLayout';
 import { useEffect, useState } from 'react';
@@ -22,8 +22,7 @@ const Home: NextPage = () => {
       try {
         const response = await fetch("http://localhost:8787/api/todos");
         const data = await response.json();
-        console.log("Data from API:", data); // Add this line for debugging
-        setTodos(data.todos); 
+        setTodos(data.todos);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -34,18 +33,35 @@ const Home: NextPage = () => {
     fetchTodos();
   }, []);
 
+  const handleToggle = (id: number) => {
+    setTodos(todos.map(todo => 
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    ));
+  };
+
+  const handleDelete = (id: number) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
   return (
     <TodoLayout>
-      <p>Welcome to your Todo App. Start by adding a todo item!</p>
-
-      {/* Display loading state */}
+      <p className='my-5 text-center'>Welcome to your Todo App. Start by adding a todo item!</p>
+      
+      {/* Loading State */}
       {loading && <p>Loading todos...</p>}
-
+      
       {/* Display todos */}
       <div>
         {todos.length > 0 ? (
           todos.map((todo) => (
-            <TodoItem key={todo.id} text={todo.text} completed={todo.completed} />
+            <TodoItem
+              key={todo.id}
+              id={todo.id}
+              text={todo.text}
+              completed={todo.completed}
+              onToggle={handleToggle}
+              onDelete={handleDelete}
+            />
           ))
         ) : (
           <p>No todos available.</p>
