@@ -3,7 +3,6 @@ import React from 'react';
 import { Badge } from './ui/badge';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
-import { Check } from 'lucide-react';
 
 interface TodoItemProps {
   id: number;
